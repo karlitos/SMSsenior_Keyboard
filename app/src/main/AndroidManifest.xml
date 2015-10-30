@@ -9,12 +9,13 @@
 
         <service
             android:name=".KeyboardService"
-            android:label="Senioren Tastatur"
-            android:permission="android.permission.BIND_INPUT_METHOD">
+            android:permission="android.permission.BIND_INPUT_METHOD"
+            android:label="Senioren Tastatur">      <!-- Name that get displayed in the "Language and Input" Settings  -->
+
 
             <meta-data
                 android:name="android.view.im"
-                android:resource="@xml/imputmethod"/>
+                android:resource="@xml/imputmethod"/> <!-- Definition of the InputMethod-->
 
             <intent-filter>
                 <action android:name="android.view.InputMethod"/>

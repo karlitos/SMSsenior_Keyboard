@@ -11,9 +11,9 @@ import android.view.inputmethod.InputConnection;
  * Project: SMSsenior_Keyboard
  * Package: com.htl_donaustadt.andi.smssenior_keyboard
  * <p/>
- * HARDWARE KEYBOARD IM EMULATOR DEAKTIVIEREN DAMIT DIE TASTATUR BEIM KLICK IN EIN TEXTFELD ERSCHEINT
+ * DISABLE HARDWARE KEYBOARD IN EMULATOR FOR PROPER WORK OF THE KEYBOARD
  * <p/>
- * Quelle:  http://code.tutsplus.com/tutorials/create-a-custom-keyboard-on-android--cms-22615
+ * Source:  http://code.tutsplus.com/tutorials/create-a-custom-keyboard-on-android--cms-22615
  */
 
 public class KeyboardService extends InputMethodService implements KeyboardView.OnKeyboardActionListener
@@ -82,10 +82,11 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
                     case -88888:
                         keyboardView.setKeyboard(recommendationKeyboard);
                         break;
+                    /* For Test purposes
                     case -77777:
                         inputConnection.commitText("Das ist ein Vorschlag", 1);
                         keyboardView.setKeyboard(defaultKeyboard);
-                        break;
+                        break; */
                     case -66666:
                         keyboardView.setKeyboard(defaultKeyboard);
                         break;
