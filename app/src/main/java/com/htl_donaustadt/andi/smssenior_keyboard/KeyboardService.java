@@ -8,7 +8,6 @@ import android.view.inputmethod.InputConnection;
 
 /**
  * Created by Andi on 29.09.2015.
- * Project: SMSsenior_Keyboard
  * Package: com.htl_donaustadt.andi.smssenior_keyboard
  * <p/>
  * DISABLE HARDWARE KEYBOARD IN EMULATOR FOR PROPER WORK OF THE KEYBOARD
@@ -21,92 +20,85 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
     private KeyboardView keyboardView;
     private Keyboard defaultKeyboard;
     private Keyboard charKeyboard;
-    private Keyboard recommendationKeyboard;
-    private boolean isCaps = false;
-    private boolean isCharKeyboard = false;
+    private boolean isCaps = true; //Start the keyboard in Caps-layout
+    private boolean isCharKeyboard = false; //Start the keyboard with letter-layout
 
     @Override
     public View onCreateInputView()
     {
         keyboardView = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard, null);
-        defaultKeyboard = new Keyboard(this, R.xml.defaultkeyboard);
-        charKeyboard = new Keyboard(this, R.xml.charkeyboard);
-        recommendationKeyboard = new Keyboard(this, R.xml.recommendationkeyboard);
+        defaultKeyboard = new Keyboard(this, R.xml.letter_keyboard);
+        charKeyboard = new Keyboard(this, R.xml.specialcharacter_keyboard);
         keyboardView.setKeyboard(defaultKeyboard);
         keyboardView.setOnKeyboardActionListener(this);
-        keyboardView.setPreviewEnabled(false);
+        keyboardView.setPreviewEnabled(false); //Disable the preview when key is long pressed
+
+        defaultKeyboard.setShifted(true); // Start the keyboard in Caps-layout
+        keyboardView.invalidateAllKeys(); // Requests a redraw of the entire keyboard
         return keyboardView;
     }
 
     @Override
-    public void onKey(int i, int[] ints)
+    public void onKey(int primaryKeyCode, int[] ints)
     {
-        InputConnection inputConnection = getCurrentInputConnection();
-        switch (i)
+        InputConnection inputConnection = getCurrentInputConnection(); //Retrieve the currently active InputConnection that is bound to the input method
+        switch (primaryKeyCode)
         {
-            case Keyboard.KEYCODE_DELETE:
-                inputConnection.deleteSurroundingText(1, 0);
+            case Keyboard.KEYCODE_DELETE: // BackSpace key pressed
+                inputConnection.deleteSurroundingText(1, 0); //Delete 1 character of text before the current cursor position and 0 after the cursor position
                 break;
 
-            case Keyboard.KEYCODE_SHIFT:
+            case Keyboard.KEYCODE_SHIFT: // Shit key pressed
                 if (isCaps)
                 {
-                    defaultKeyboard.setShifted(false);
-                    keyboardView.invalidateAllKeys();
+                    defaultKeyboard.setShifted(false); // If keyboard is already in Caps-layout then return to lower key-layout
+                    keyboardView.invalidateAllKeys(); // Requests a redraw of the entire keyboard
                     isCaps = false;
                 }
                 else
                 {
                     isCaps = true;
-                    defaultKeyboard.setShifted(true);
-                    keyboardView.invalidateAllKeys();
+                    defaultKeyboard.setShifted(true); // if keyboard is in lower key-layout then switch it to Caps-layout
+                    keyboardView.invalidateAllKeys(); // Requests a redraw of the entire keyboard
                 }
                 break;
 
             default:
-                char code = (char) i;
-                switch (i)
-                {
-                    case -99999:
-                        if (!isCharKeyboard)
-                        {
-                            isCharKeyboard = true;
-                            keyboardView.setKeyboard(charKeyboard);
-                        }
-                        else
-                        {
-                            isCharKeyboard = false;
-                            keyboardView.setKeyboard(defaultKeyboard);
-                        }
-                        break;
-                    case -88888:
-                        keyboardView.setKeyboard(recommendationKeyboard);
-                        break;
-                    /* For Test purposes
-                    case -77777:
-                        inputConnection.commitText("Das ist ein Vorschlag", 1);
-                        keyboardView.setKeyboard(defaultKeyboard);
-                        break; */
-                    case -66666:
-                        keyboardView.setKeyboard(defaultKeyboard);
-                        break;
+                char keyCode = (char) primaryKeyCode;
 
-                    default:
-                        if (Character.isLetter(code) && isCaps)
-                        {
-                            code = Character.toUpperCase(code);
-                        }
-                        inputConnection.commitText(String.valueOf(code), 1);
-                        if (isCaps)
-                        {
-                            defaultKeyboard.setShifted(false);
-                            keyboardView.invalidateAllKeys();
-                            isCaps = false;
-                        }
+                if (primaryKeyCode == -99999) //keyCode for switching between letter keyboard layout and character-layout
+                {
+                    if (!isCharKeyboard) //if keyboard is in letter-layout then switch it to character-layout
+                    {
+                        isCharKeyboard = true;
+                        keyboardView.setKeyboard(charKeyboard);
+                    }
+                    else //if keyboard is already in character-layout then switch back to letter-layout
+                    {
+                        isCharKeyboard = false;
+                        keyboardView.setKeyboard(defaultKeyboard);
+                    }
                 }
+                else
+                {
+                    if (Character.isLetter(keyCode) && isCaps) //check if the keyCode is a valid letter and check if the keyboard is in Caps-layout
+                    {
+                        keyCode = Character.toUpperCase(keyCode); // set keyValue to UpperCase
+                    }
+                    inputConnection.commitText(String.valueOf(keyCode), 1); //Commit value from keyCode to the text box and set the cursor 1 position to the right
+
+                    if (isCaps) //switch back the keyboard to the lowercase letter-layout
+                    {
+                        defaultKeyboard.setShifted(false);
+                        keyboardView.invalidateAllKeys();
+                        isCaps = false;
+                    }
+                }
+
         }
     }
 
+    //region  Not implemented abstract methods
     @Override
     public void onPress(int i)
     {
@@ -148,4 +140,5 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
     {
 
     }
+    //endregion
 }
