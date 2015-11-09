@@ -117,7 +117,7 @@
             android:keyWidth="20%p"/>
         <Key
             android:codes="-1"
-            android:keyLabel="Caps"/>
+            android:keyLabel="Umschalt"/>
         <Key
             android:codes="-99999"
             android:keyEdgeFlags="right"

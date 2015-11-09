@@ -1,6 +1,7 @@
 <manifest package="com.htl_donaustadt.andi.smssenior_keyboard"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,8 +10,8 @@
 
         <service
             android:name=".KeyboardService"
-            android:permission="android.permission.BIND_INPUT_METHOD"
-            android:label="Senioren Tastatur">      <!-- Name that get displayed in the "Language and Input" Settings  -->
+            android:label="Senioren Tastatur"
+            android:permission="android.permission.BIND_INPUT_METHOD">      <!-- Name that get displayed in the "Language and Input" Settings  -->
 
 
             <meta-data
