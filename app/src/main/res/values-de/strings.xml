@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SMS Senior Tastatur</string>
+    <string name="key_space">Abstand</string>
+    <string name="key_delete">Löschen</string>
+    <string name="key_shift">Umschalt</string>
+    <string name="key_chars">Zeichen</string>
+    <string name="key_text">Text</string>
+    <string name="localType">de_DE</string>
+    <string name="keyboardLabel">Senioren Tastatur</string>
+</resources>

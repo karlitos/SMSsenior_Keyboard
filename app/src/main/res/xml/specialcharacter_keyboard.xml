@@ -56,11 +56,11 @@
         <Key
             android:codes="-5"
             android:isRepeatable="true"
-            android:keyLabel="Löschen"/>
+            android:keyLabel="@string/key_delete"/>
         <Key
             android:codes="-99999"
             android:keyEdgeFlags="right"
-            android:keyLabel="Text"/>
+            android:keyLabel="@string/key_text"/>
     </Row>
 
 </Keyboard>

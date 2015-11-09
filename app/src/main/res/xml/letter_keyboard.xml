@@ -109,19 +109,19 @@
         <Key
             android:codes="32"
             android:isRepeatable="true"
-            android:keyLabel="Abstand"/>
+            android:keyLabel="@string/key_space"/>
         <Key
             android:codes="-5"
             android:isRepeatable="true"
-            android:keyLabel="Löschen"
+            android:keyLabel="@string/key_delete"
             android:keyWidth="20%p"/>
         <Key
             android:codes="-1"
-            android:keyLabel="Umschalt"/>
+            android:keyLabel="@string/key_shift"/>
         <Key
             android:codes="-99999"
             android:keyEdgeFlags="right"
-            android:keyLabel="Zeichen"/>
+            android:keyLabel="@string/key_chars"/>
     </Row>
 
 </Keyboard>
