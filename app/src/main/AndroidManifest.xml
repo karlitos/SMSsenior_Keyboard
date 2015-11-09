@@ -1,5 +1,8 @@
 <manifest package="com.htl_donaustadt.andi.smssenior_keyboard"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          android:versionCode="5"
+          android:versionName="1.0.1"
+    >
 
 
     <application
