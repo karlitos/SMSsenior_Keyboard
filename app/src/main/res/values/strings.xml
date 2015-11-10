@@ -5,6 +5,7 @@
     <string name="key_shift">Shift</string>
     <string name="key_chars">Chars</string>
     <string name="key_text">Letters</string>
+    <string name="key_enter">Done</string>
     <string name="localType">en_UK</string>
     <string name="keyboardLabel">Senior Keyboard</string>
 

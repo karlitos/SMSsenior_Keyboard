@@ -1,6 +1,6 @@
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
           android:horizontalGap="0px"
-          android:keyHeight="90dp"
+          android:keyHeight="100dp"
           android:keyWidth="30%p"
           android:verticalGap="0px">
 
@@ -20,35 +20,38 @@
             android:keyLabel="4"/>
         <Key
             android:codes="53"
-            android:keyEdgeFlags="right"
             android:keyLabel="5"/>
-    </Row>
-
-    <Row>
         <Key
             android:codes="54"
-            android:keyEdgeFlags="left"
+
             android:keyLabel="6"/>
         <Key
             android:codes="55"
             android:keyLabel="7"/>
         <Key
             android:codes="56"
-            android:keyLabel="8"/>
-        <Key
-            android:codes="57"
-            android:keyLabel="9"/>
-        <Key
-            android:codes="48"
             android:keyEdgeFlags="right"
-            android:keyLabel="0"/>
+            android:keyLabel="8"/>
+
     </Row>
+
 
     <Row>
         <Key
-            android:codes="46"
+            android:codes="57"
             android:keyEdgeFlags="left"
+            android:keyLabel="9"/>
+        <Key
+            android:codes="48"
+
+            android:keyLabel="0"/>
+        <Key
+            android:codes="46"
+
             android:keyLabel="."/>
+        <Key
+            android:codes="33"
+            android:keyLabel="!"/>
         <Key
             android:codes="44"
             android:keyLabel=","/>
@@ -60,31 +63,35 @@
             android:keyLabel="-"/>
         <Key
             android:codes="42"
-
-            android:keyLabel="*"/>
-        <Key
-            android:codes="47"
             android:keyEdgeFlags="right"
-            android:keyLabel="/"/>
+            android:keyLabel="*"/>
+
+
     </Row>
 
     <Row>
 
         <Key
-            android:codes="33"
-            android:keyEdgeFlags="left"
-            android:keyLabel="!"/>
-        <Key
             android:codes="63"
-            android:keyLabel="\?"/>
+            android:keyEdgeFlags="left"
+            android:keyLabel="\?"
+            android:keyWidth="18.75%p"/>
+        <Key
+            android:codes="47"
+
+            android:keyLabel="/"
+            android:keyWidth="18.75%p"/>
+
         <Key
             android:codes="-5"
             android:isRepeatable="true"
-            android:keyLabel="@string/key_delete"/>
+            android:keyLabel="@string/key_delete"
+            android:keyWidth="31.25%p"/>
         <Key
             android:codes="-99999"
             android:keyEdgeFlags="right"
-            android:keyLabel="@string/key_text"/>
+            android:keyLabel="@string/key_text"
+            android:keyWidth="31.25%p"/>
     </Row>
 
 </Keyboard>

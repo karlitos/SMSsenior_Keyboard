@@ -1,6 +1,6 @@
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
           android:horizontalGap="0px"
-          android:keyHeight="90dp"
+          android:keyHeight="80dp"
           android:keyWidth="20%p"
           android:verticalGap="0px">
 
@@ -108,19 +108,34 @@
         <Key
             android:codes="32"
             android:isRepeatable="true"
-            android:keyLabel="@string/key_space"/>
+            android:keyLabel="@string/key_space"
+            android:keyWidth="40%p"/>
         <Key
             android:codes="-5"
             android:isRepeatable="true"
+            android:keyEdgeFlags="right"
             android:keyLabel="@string/key_delete"
-            android:keyWidth="20%p"/>
-        <Key
-            android:codes="-1"
-            android:keyLabel="@string/key_shift"/>
+            android:keyWidth="40%p"/>
+
+    </Row>
+    <Row>
+
+
         <Key
             android:codes="-99999"
+            android:keyEdgeFlags="left"
+            android:keyLabel="@string/key_chars"
+            android:keyWidth="40%p"/>
+        <Key
+            android:codes="-1"
+
+            android:keyLabel="@string/key_shift"
+            android:keyWidth="40%p"/>
+        <Key
+            android:codes="-4"
             android:keyEdgeFlags="right"
-            android:keyLabel="@string/key_chars"/>
+            android:keyLabel="@string/key_enter"
+            android:keyWidth="40%p"/>
     </Row>
 
 </Keyboard>

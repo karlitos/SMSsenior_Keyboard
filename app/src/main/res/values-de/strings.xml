@@ -5,6 +5,7 @@
     <string name="key_shift">Umschalt</string>
     <string name="key_chars">Zeichen</string>
     <string name="key_text">Text</string>
+    <string name="key_enter">Fertig</string>
     <string name="localType">de_DE</string>
     <string name="keyboardLabel">Senioren Tastatur</string>
 </resources>

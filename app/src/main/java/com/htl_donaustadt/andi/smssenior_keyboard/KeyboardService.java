@@ -3,6 +3,7 @@ package com.htl_donaustadt.andi.smssenior_keyboard;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
 
@@ -44,6 +45,10 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
         InputConnection inputConnection = getCurrentInputConnection(); //Retrieve the currently active InputConnection that is bound to the input method
         switch (primaryKeyCode)
         {
+            case Keyboard.KEYCODE_DONE: //Enter key pressed
+                inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
+                break;
+
             case Keyboard.KEYCODE_DELETE: // BackSpace key pressed
                 inputConnection.deleteSurroundingText(1, 0); //Delete 1 character of text before the current cursor position and 0 after the cursor position
                 break;
