@@ -3,6 +3,7 @@ package com.htl_donaustadt.andi.smssenior_keyboard;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
@@ -46,6 +47,7 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
         switch (primaryKeyCode)
         {
             case Keyboard.KEYCODE_DONE: //Enter key pressed
+                Log.d("Enter", "Enter");
                 inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
                 break;
 
