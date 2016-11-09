@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SMS Senior Keyboard</string>
+    <string name="key_chars">Znaky</string>
+    <string name="key_delete">Smazat</string>
+    <string name="key_enter">Hotovo</string>
+    <string name="key_shift">Vel/Mal</string>
+    <string name="keyboardLabel">Klávesnice pro seniory</string>
+    <string name="key_space">Mezera</string>
+    <string name="key_text">Písmena</string>
+    <string name="localType">cs_CZ</string>
+</resources>
