@@ -19,7 +19,7 @@
 
             <meta-data
                 android:name="android.view.im"
-                android:resource="@xml/imputmethod"/> <!-- Definition of the InputMethod-->
+                android:resource="@xml/inputmethod"/> <!-- Definition of the InputMethod-->
 
             <intent-filter>
                 <action android:name="android.view.InputMethod"/>

@@ -1,12 +1,17 @@
 package com.htl_donaustadt.andi.smssenior_keyboard;
 
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
+import android.os.Build;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.InputMethodManager;
+import android.view.inputmethod.InputMethodSubtype;
 
 /**
  * Created by Andi on 29.09.2015.
@@ -17,6 +22,7 @@ import android.view.inputmethod.InputConnection;
  * Source:  http://code.tutsplus.com/tutorials/create-a-custom-keyboard-on-android--cms-22615
  */
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class KeyboardService extends InputMethodService implements KeyboardView.OnKeyboardActionListener
 {
     private KeyboardView keyboardView;
@@ -24,13 +30,23 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
     private Keyboard charKeyboard;
     private boolean isCaps = true; //Start the keyboard in Caps-layout
     private boolean isCharKeyboard = false; //Start the keyboard with letter-layout
+    private InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
     @Override
     public View onCreateInputView()
     {
-        keyboardView = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard, null);
-        defaultKeyboard = new Keyboard(this, R.xml.letter_keyboard);
+        InputMethodSubtype subtype = imm.getCurrentInputMethodSubtype();
+        switch(subtype.getExtraValue()) { // Initialize keyboard with abcde or qwert layout
+            case "abcde":
+                defaultKeyboard = new Keyboard(this, R.xml.letter_keyboard);
+                break;
+            case "qwert":
+                defaultKeyboard = new Keyboard(this, R.xml.letter_keyboard);
+                break;
+        }
+
         charKeyboard = new Keyboard(this, R.xml.specialcharacter_keyboard);
+        keyboardView = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard, null);
         keyboardView.setKeyboard(defaultKeyboard);
         keyboardView.setOnKeyboardActionListener(this);
         keyboardView.setPreviewEnabled(false); //Disable the preview when key is long pressed
@@ -103,6 +119,19 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
                 }
 
         }
+    }
+
+    @Override
+    public void onCurrentInputMethodSubtypeChanged(InputMethodSubtype subtype) {
+        switch(subtype.getExtraValue()) { // Initialize keyboard with abcde or qwert layout
+            case "abcde":
+                defaultKeyboard = new Keyboard(this, R.xml.letter_keyboard);
+                break;
+            case "qwert":
+                defaultKeyboard = new Keyboard(this, R.xml.letter_keyboard);
+                break;
+        }
+        keyboardView.setKeyboard(defaultKeyboard);
     }
 
     //region  Not implemented abstract methods
