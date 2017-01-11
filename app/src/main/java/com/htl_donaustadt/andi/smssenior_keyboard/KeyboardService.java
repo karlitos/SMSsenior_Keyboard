@@ -30,18 +30,19 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
     private Keyboard charKeyboard;
     private boolean isCaps = true; //Start the keyboard in Caps-layout
     private boolean isCharKeyboard = false; //Start the keyboard with letter-layout
-    private InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+    private InputMethodManager imm;
 
     @Override
     public View onCreateInputView()
     {
+        imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         InputMethodSubtype subtype = imm.getCurrentInputMethodSubtype();
         switch(subtype.getExtraValue()) { // Initialize keyboard with abcde or qwert layout
             case "abcde":
-                defaultKeyboard = new Keyboard(this, R.xml.letter_keyboard);
+                defaultKeyboard = new Keyboard(this, R.xml.alphabet_letter_keyboard);
                 break;
             case "qwert":
-                defaultKeyboard = new Keyboard(this, R.xml.letter_keyboard);
+                defaultKeyboard = new Keyboard(this, R.xml.typewriter_letter_keyboard);
                 break;
         }
 
@@ -125,10 +126,10 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
     public void onCurrentInputMethodSubtypeChanged(InputMethodSubtype subtype) {
         switch(subtype.getExtraValue()) { // Initialize keyboard with abcde or qwert layout
             case "abcde":
-                defaultKeyboard = new Keyboard(this, R.xml.letter_keyboard);
+                defaultKeyboard = new Keyboard(this, R.xml.alphabet_letter_keyboard);
                 break;
             case "qwert":
-                defaultKeyboard = new Keyboard(this, R.xml.letter_keyboard);
+                defaultKeyboard = new Keyboard(this, R.xml.alphabet_letter_keyboard);
                 break;
         }
         keyboardView.setKeyboard(defaultKeyboard);
