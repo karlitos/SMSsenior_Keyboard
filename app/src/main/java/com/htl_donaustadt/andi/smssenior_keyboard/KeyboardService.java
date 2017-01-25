@@ -129,11 +129,14 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
                 defaultKeyboard = new Keyboard(this, R.xml.alphabet_letter_keyboard);
                 break;
             case "qwert":
-                defaultKeyboard = new Keyboard(this, R.xml.alphabet_letter_keyboard);
+                defaultKeyboard = new Keyboard(this, R.xml.typewriter_letter_keyboard);
                 break;
         }
         keyboardView.setKeyboard(defaultKeyboard);
+        setInputView(this.onCreateInputView());
     }
+
+
 
     //region  Not implemented abstract methods
     @Override
