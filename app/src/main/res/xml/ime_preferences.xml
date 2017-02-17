@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/select_layout">
+        <!--<SwitchPreference-->
+            <!--android:key="abcde"-->
+            <!--android:title="@string/alphabetLayoutLabel" />-->
+        <!--<SwitchPreference-->
+            <!--android:key="qwert"-->
+            <!--android:title="@string/typewriterLayoutLabel" />-->
+        <ListPreference
+            android:title="Layouts"
+            android:key="layouts"
+            android:summary="Click to select the keyboard layout"
+            android:defaultValue="qwertz"
+            android:entries="@array/list"
+            android:entryValues="@array/values"
+            ></ListPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

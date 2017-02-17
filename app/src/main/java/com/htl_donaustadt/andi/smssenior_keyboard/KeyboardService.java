@@ -2,10 +2,12 @@ package com.htl_donaustadt.andi.smssenior_keyboard;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -35,6 +37,12 @@ public class KeyboardService extends InputMethodService implements KeyboardView.
     @Override
     public View onCreateInputView()
     {
+        // SharedPreferences prefs = getSharedPreferences("ime_preferences", MODE_PRIVATE);
+        // SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        // int layout = prefs.getInt("layouts", -1);
+
+        // The above is not working I need to access the List preference layouts and get the value to know, how to initialize the defaultKeyboard
+
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         InputMethodSubtype subtype = imm.getCurrentInputMethodSubtype();
         switch(subtype.getExtraValue()) { // Initialize keyboard with abcde or qwert layout

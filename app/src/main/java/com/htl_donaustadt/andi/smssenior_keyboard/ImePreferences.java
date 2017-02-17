@@ -3,6 +3,7 @@ package com.htl_donaustadt.andi.smssenior_keyboard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.SwitchPreference;
 
 
 /**
@@ -33,7 +34,7 @@ public class ImePreferences extends PreferenceActivity {
             setInputMethodSettingsCategoryTitle(R.string.layout_selection_title);
             setSubtypeEnablerTitle(R.string.select_layout);
             // Load the preferences from an XML resource
-            //addPreferencesFromResource(R.xml.ime_preferences);
+            addPreferencesFromResource(R.xml.ime_preferences);
         }
     }
 }
